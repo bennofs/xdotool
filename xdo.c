@@ -1242,12 +1242,12 @@ static KeySym _xdo_keysym_from_char(const xdo_t *xdo, wchar_t key) {
   int i = 0;
   int len = xdo->charcodes_len;
 
-  //printf("Finding symbol for key '%c'\n", key);
+  printf("Finding symbol for key '%lc' (keys %d)\n", key, len);
   for (i = 0; i < len; i++) {
     //printf("  => %c vs %c (%d)\n",
            //key, xdo->charcodes[i].key, (xdo->charcodes[i].key == key));
     if (xdo->charcodes[i].key == key) {
-      //printf("  => MATCH to symbol: %lu\n", xdo->charcodes[i].symbol);
+      printf("  => MATCH to symbol: %lu\n", xdo->charcodes[i].symbol);
       return xdo->charcodes[i].symbol;
     }
   }
@@ -1526,7 +1526,7 @@ void _xdo_send_key(const xdo_t *xdo, Window window, charcodemap_t *key,
     }
   }
   if (use_xtest) {
-    //printf("XTEST: Sending key %d %s\n", key->code, is_press ? "down" : "up");
+    printf("XTEST: Sending key %d %s\n", key->code, is_press ? "down" : "up");
     XkbStateRec state;
     XkbGetState(xdo->xdpy, XkbUseCoreKbd, &state);
     int current_group = state.group;

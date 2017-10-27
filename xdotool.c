@@ -272,6 +272,8 @@ struct dispatch {
   { "exec", cmd_exec, },
   { "sleep", cmd_sleep, },
 
+  { "fakemap", cmd_fakemap },
+
   { NULL, NULL, },
 };
 
